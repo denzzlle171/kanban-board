@@ -39,7 +39,7 @@ export const Header = () => {
   };
 
   return (
-    <Box p="20px" pb='10px'>
+    <Box p="20px" pb="10px">
       <Flex w="100%" gap="5">
         <Input
           size="sm"
@@ -72,11 +72,7 @@ export const Header = () => {
           {loading ? (
             // <Text>... loading ...</Text>
 
-            <Skeleton
-              startColor="teal"
-              endColor="#edf2f7"
-              width="100%"
-            >
+            <Skeleton startColor="teal" endColor="#edf2f7" width="100%">
               <div>contents wrapped</div>
             </Skeleton>
           ) : (
@@ -89,8 +85,8 @@ export const Header = () => {
                 </Text>
               ) : (
                 <Text color="teal">
-                  This is a Kanban application that will display tasks from
-                  entered repositories.
+                  Please enter the name of the repository from which you want to
+                  fetch tasks. Before that, please remove the provided example.
                 </Text>
               )}
             </>

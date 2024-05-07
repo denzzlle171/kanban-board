@@ -3,20 +3,33 @@ import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 import { useStoreIssues } from '../store/issues-store';
 
 export const PaginationBar = () => {
-  const { SetCurrentPage, currentPage } = useStoreIssues((state) => ({
+  const { SetCurrentPage, currentPage, path, fetchTasks} = useStoreIssues((state) => ({
     SetCurrentPage: state.SetCurrentPage,
     currentPage: state.currentPage,
+    path: state.path,
+    fetchTasks: state.fetchTasks,
   }));
+
+
+    let owner: string, repo: string;
+
+    if (path) {
+      [owner, repo] = path.split('/');
+    }
+
+
 
   const prev = () => {
     if (currentPage > 1) {
       SetCurrentPage(currentPage - 1)
+      fetchTasks(owner, repo);
     }
   };
 
   
   const next = () => {
     SetCurrentPage(currentPage + 1);
+    fetchTasks(owner, repo);
   };
 
   return (
